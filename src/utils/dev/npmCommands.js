@@ -14,7 +14,17 @@ const BOXEN_OPTS = {
   borderStyle: "round"
 };
 
-const osPrefix = process.platform === "win32" ? "" : `./`;
+let osPrefix = "";
+switch (process.platform) {
+  case "win32":
+    osPrefix = ``;
+    break;
+  case "linux":
+    osPrefix = `cmd.exe /c `;
+    break;
+  default:
+    osPrefix = `./`;
+}
 
 // Spinner component for terminal
 const ora = require("ora");
